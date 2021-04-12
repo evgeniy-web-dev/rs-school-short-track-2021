@@ -15,15 +15,15 @@
  * The result should be 9
  */
  function getMatrixElementsSum(matrix) {
-  let sum = 0;
-  for (let i = 0; i < matrix.length; i++) {
-    for (let j = 0; j < matrix[i].length; j++) {
-      if (!matrix[i - 1] || matrix[i - 1][j] !== 0) {
-        sum += matrix[i][j];
+  const x = matrix;
+  for (let i = 0; i < x.length - 1; i++) {
+    for (let j = 0; j < x[i].length; j++) {
+      if (x[i][j] === 0) {
+        x[i + 1][j] = 0;
       }
     }
   }
-  return sum;
+  return x.join(',').split(',').map(Number).reduce((a, b) => a + b);
 }
 
 module.exports = getMatrixElementsSum;

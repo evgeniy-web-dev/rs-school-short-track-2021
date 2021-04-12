@@ -8,14 +8,9 @@
  * For the input 'prettyandsimple@example.com', the output should be 'example.com'
  *
  */
-// function getEmailDomain(email) {
-//   return email.match(/(?<=@)[a-zA-z0-9-]+\.[a-z]{2,3}$/)[0];
-// }
-
+// positive lookbehind
 function getEmailDomain(email) {
-  const emailArr = email.split('@');
-
-  return emailArr[emailArr.length - 1];
+  return email.match(RegExp('(?<=@)[a-z0-9-]+.[a-z]{2,6}', 'g'))[0];
 }
 
 module.exports = getEmailDomain;
