@@ -11,15 +11,19 @@
  */
  function getCommonCharacterCount(s1, s2) {
   let result = 0;
-  const newS1 = s1.split('');
-  const newS2 = s2.split('');
-  for (let i = 0; i < newS1.length; i++) {
-    const index = newS2.indexOf(newS1[i]);
-    if (index !== -1) {
-      result++;
-      newS2.splice(index, 1);
+  // eslint-disable-next-line camelcase
+  const s1_obj = s1.split('');
+  // eslint-disable-next-line camelcase
+  const s2_obj = s2.split('');
+  // eslint-disable-next-line no-undef,array-callback-return
+  s1_obj.sort().map((item) => {
+    // eslint-disable-next-line no-undef,eqeqeq
+    if (s2_obj.indexOf(item) != -1) {
+      result += 1;
+      // eslint-disable-next-line no-undef
+      s2_obj.splice(s2_obj.indexOf(item), 1);
     }
-  }
+  });
   return result;
 }
 
